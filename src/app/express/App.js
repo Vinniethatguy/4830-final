@@ -6,9 +6,9 @@ const mongoose = require('mongoose')
 const bcrypt = require("bcrypt");
 const UserModel = require('./model/user')
 
-//mongoose.connect('mongodb+srv://admin:admin@mean.uibpxfz.mongodb.net/?retryWrites=true&w=majority')
+//mongoose.connect('mongodb+srv://admin:admin@bakery.gqzrwuq.mongodb.net/user_posts?retryWrites=true&w=majority')
 
-mongoose.connect('mongodb+srv://admin:admin@bakery.gqzrwuq.mongodb.net/user_posts?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://admin:admin@mean.uibpxfz.mongodb.net/bakery_users?retryWrites=true&w=majority')
 .then(()=>{
   console.log('Connected to database')
 })
