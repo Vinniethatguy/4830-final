@@ -8,8 +8,7 @@ const UserModel = require('./model/user')
 
 //mongoose.connect('mongodb+srv://admin:admin@mean.uibpxfz.mongodb.net/?retryWrites=true&w=majority')
 
-mongoose.conn
-ect("mongodb+srv://admin:admin@bakery.gqzrwuq.mongodb.net/user_posts?retryWrites=true&w=majority`,")
+mongoose.connect('mongodb+srv://admin:admin@bakery.gqzrwuq.mongodb.net/user_posts?retryWrites=true&w=majority')
 .then(()=>{
   console.log('Connected to database')
 })
@@ -37,7 +36,7 @@ app.use((req, res, next) => {
   next();
 })
 
-app.post("/api/user", async (req, res, next) => {
+app.post("/api/users", async (req, res, next) => {
   var user_name = req.body.firstname + "_" + req.body.lastname;
   user_psw = await hashPassword(req.body.password);
 
@@ -50,7 +49,7 @@ app.post("/api/user", async (req, res, next) => {
   });
 
   new_user.save();
-  console.log(new_user);
+
   res.status(201).json({
     message: 'User added successful'
   });
