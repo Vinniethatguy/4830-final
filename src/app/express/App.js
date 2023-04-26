@@ -1,139 +1,90 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
-
 const express = require('express')
 const app = express()
-const port = 3001
+const bodyParser = require('body-parser')
 
-const bcrypt = require('bcrypt')
-const passport = require('passport')
-const flash = require('express-flash')
-const session = require('express-session')
-const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const bcrypt = require("bcrypt");
+const UserModel = require('./model/user')
 
+//mongoose.connect('mongodb+srv://admin:admin@mean.uibpxfz.mongodb.net/?retryWrites=true&w=majority')
 
-
-const usrs = []
-
-//Creates and authenticates password
-const createPassport = require('./passport-config')//because it is exported as initalized
-createPassport(
-  passport,
-  email => usrs.find(user => user.email === email),
-  id => usrs.find(user => user.id === id)
-)
-
-
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://<Vinnmongodb+srv://<Vinnieie>:cynvuq-kemvog-7duvfU@capstone.ca0njlu.mongodb.net/login?retryWrites=true&w=majority";
-mongoose.connect('mongodb+srv://admin:admin@mean.uibpxfz.mongodb.net/?retryWrites=true&w=majority')
+mongoose.conn
+ect("mongodb+srv://admin:admin@bakery.gqzrwuq.mongodb.net/user_posts?retryWrites=true&w=majority`,")
 .then(()=>{
-  console.log('Connected to the database')
-}).catch(()=>{
-console.log("error no connection")
+  console.log('Connected to database')
+})
+.catch(()=>{
+  console.log('connection error')
 })
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
 
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     // await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     // await client.close();
-//   }
-// }
-// run().catch(console.dir);
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
-
-app.use(flash())
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}))
-
-//calls the function from the passportConfig.js
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride('_method'))
-
-//used to check the name with is visible to the user
-app.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.html', { name: req.user.name })
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods",
+  "GET, POST, PATCH, DELETE, OPTIONS");
+  console.log('Middleware');
+  next();
 })
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login.html')
+app.use((req, res, next) => {
+  next();
 })
 
-//uses post to login and send to the index.js
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true
-}))
+app.post("/api/user", async (req, res, next) => {
+  var user_name = req.body.firstname + "_" + req.body.lastname;
+  user_psw = await hashPassword(req.body.password);
 
-//renders out the register.ejs if not authenticated
-app.get('/register', checkNotAuthenticated, (req, res) => {
-  res.render('register.html')
+  const new_user = new UserModel({
+    username: user_name,
+    email: req.body.email,
+    firstName: req.body.firstname,
+    lastName: req.body.lastname,
+    password: user_psw,
+  });
+
+  new_user.save();
+  console.log(new_user);
+  res.status(201).json({
+    message: 'User added successful'
+  });
 })
 
-app.post('/register', checkNotAuthenticated, async (req, res) => {
-  try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 8)
-      usrs.push({
-          id: Date.now().toString(),
-          name: req.body.name,
-          email: req.body.email,
-          password: hashedPassword
-      })
-      res.redirect('/login')
-  } catch {
-      res.redirect('/register')
-  }
-  console.log(usrs)
-})
+async function hashPassword (plainPassword) {
 
-//log usr out
-app.delete('/logout', (req, res) => {
-  req.logout(function (err) {
-      if (err) {
-          return next(err)
-      }
+  const saltRounds = 10;
+
+  const hashedPassword = await new Promise((resolve, reject) => {
+    bcrypt.genSalt(saltRounds).then(salt => {
+
+      bcrypt.hash(plainPassword, salt, function(err, hash) {
+        if (err) reject(err)
+        resolve(hash)
+      });
+    });
   })
-  res.redirect('/login')
+
+  return hashedPassword
+}
+
+
+//app.use('/api/posts',(req, res, next) => {
+app.get('/api/users',(req, res, next) => {
+  console.log("Users trying to retrieve");
+  // PostModel.find().then(documents => {
+  //     res.status(200).json({
+  //       message: "This is fetched data",
+  //       posts: documents
+  //     });
+  // });
+
+  res.send('Hello from express')
 })
 
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-      return next()
-  }
-
-  res.redirect('/login')
-}
-
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-      return res.redirect('/')
-  }
-
-  next()
-}
-module.exports = app
-
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+module.exports =app
