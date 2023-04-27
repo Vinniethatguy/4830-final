@@ -6,10 +6,14 @@
       #customerName="ngModel"
       ngModel required>
       <label for="customerEmail">EMAIL <em>&#x2a;</em></label>
-      <input id="customerEmail" name="customerEmail" required="" type="email" />
+      <input id="customerEmail" name="customerEmail" required="" type="email"
+      #customerEmail ="ngModel"
+      ngModel required>
 
       <label for="customerNote">YOUR MESSAGE <em>&#x2a;</em></label>
-      <textarea id="customerNote" name="customerNote" required="" rows="4"></textarea>
+      <textarea id="customerNote" name="customerNote" required="" rows="4"
+      #customerNote="ngModel"
+      ngModel required></textarea>
 
       <button id="customerOrder" class="button-71" >SUBMIT</button>
     </form>

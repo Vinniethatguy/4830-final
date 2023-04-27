@@ -13,14 +13,13 @@ export class ContactComponent {
   };
 
     onAddMessage(form: NgForm){
-
       if(form.invalid){
         "Invalid length";
       }
 
       this.contactService.addMessages(form.value.customerName,
         form.value.customerEmail,
-        form.value.message);
+        form.value.customerNote);
       console.log("Printed");
       form.resetForm();
     }

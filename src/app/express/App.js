@@ -37,17 +37,10 @@ app.use((req, res, next) => {
   next();
 })
 
-app.get('/api/user_login',(req, res, next) => {
-
-  console.log("Users trying to retrieve");
-  // PostModel.find().then(documents => {
-  //     res.status(200).json({
-  //       message: "This is fetched data",
-  //       posts: documents
-  //     });
-  // });
-
+app.post('/api/user_login',(req, res, next) => {
   const query = UserModel.findOne({email: req.body.email});
+
+  var pass = req.body.password;
 
   query.select('password');
 
@@ -61,8 +54,10 @@ app.get('/api/user_login',(req, res, next) => {
     if(result >= 0){
       username_signed_in = person.firstname + "_" + person.lastname;
       // success login
+      console.log("Successful");
     } else {
       // fail login
+      console.log("Incorrect info");
     }
   });
 
@@ -114,10 +109,10 @@ async function hashPassword (plainPassword) {
   return hashedPassword
 }
 
-app.post("/api/sms", async (req, res, next) => {
-
+app.post("/api/sms", (req, res, next) => {
+  console.log("In api/sms = >", req.body);
   const new_contact = new ContactModel({
-    customername: req.body.customername,
+    customername: req.body.customerName,
     email: req.body.email,
     message: req.body.message
   });
