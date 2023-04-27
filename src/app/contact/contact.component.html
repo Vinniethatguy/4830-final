@@ -3,9 +3,8 @@
     <form action="#" class="glass" #contact_msg (submit)="onAddMessage(postForm)" #postForm="ngForm">
       <label for="customerName">NAME <em>&#x2a;</em></label>
       <input id="customerName" name="customerName" required="" type="text"
-      #firstname="ngModel"
+      #customerName="ngModel"
       ngModel required>
-
       <label for="customerEmail">EMAIL <em>&#x2a;</em></label>
       <input id="customerEmail" name="customerEmail" required="" type="email" />
 
