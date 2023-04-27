@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   next();
 })
 
-app.post('/api/user_login',(req, res, next) => {
+app.post('/api/user_login', async(req, res, next) => {
   const query = UserModel.findOne({email: req.body.email});
 
   var pass = req.body.password;
@@ -55,9 +55,14 @@ app.post('/api/user_login',(req, res, next) => {
       username_signed_in = person.firstname + "_" + person.lastname;
       // success login
       console.log("Successful");
+      res.status(201).json({
+        message: 'User successfully signed in'
+      });
     } else {
       // fail login
-      console.log("Incorrect info");
+      res.status(201).json({
+        message: 'Incorrect information please try again'
+      });
     }
   });
 

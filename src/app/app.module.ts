@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
+import { LandingComponent } from './landing/landing.component';
 import {User} from './user.model';
 import {Contact} from './contact.model';
 import { Login_User } from './login_user.model';
@@ -23,7 +24,8 @@ import {ApiService} from './api.service';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    ContactComponent
+    ContactComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

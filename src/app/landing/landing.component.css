@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
+
+#landing {
+  position: absolute;
+  width: 80%;
+  height: 95%;
+  margin: 10px;
+  left: 20%;
+  background-color:azure;
+  background: url("../../assets/img/backg.png");
+  font-family: 'Castoro Titling', cursive;
+}
+
+#welcome_cont{
+  position:relative;
+  width: 45%;
+  height: 65%;
+  color: black;
+  font-size: 210%;
+  margin-left: 30%;
+  margin-top: 10%;
+}
+
+.first{
+  margin-top: 5%;
+  margin-left: 12%;
+}
+
+.mid{
+  margin-left: 25%;
+}
+
+.last{
+  margin-left: 25%;
+}
+
+.glass{
+  background: rgba(208, 167, 216, 0.48);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.3px);
+  -webkit-backdrop-filter: blur(6.3px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
