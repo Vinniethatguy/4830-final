@@ -1,1 +1,19 @@
-<p>login works!</p>
+<mat-card>
+  <form #login (submit)="onLoginUser(postForm)" #postForm="ngForm">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" class="form-control"
+      #email="ngModel"
+      ngModel required>
+    </div>
+    <pre></pre>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control"
+      #password="ngModel"
+      ngModel required>
+    </div>
+    <pre></pre>
+    <button class="btn-primary" type="submit">Login</button>
+  </form>
+</mat-card>

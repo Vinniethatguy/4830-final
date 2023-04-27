@@ -10,18 +10,15 @@ import { NgForm } from "@angular/forms";
 export class LoginComponent {
   constructor(public userService: ApiService){};
 
-  // onAddUser(form: NgForm){
+  onLoginUser(form: NgForm){
 
-  //   if(form.invalid){
-  //     return "Invalid length";
-  //   }
+    if(form.invalid){
+       "Invalid length";
+    }
 
-  //   this.userService.addUser(form.value.firstname,
-  //     form.value.lastname,
-  //     form.value.email,
-  //     form.value.password);
-  //   console.log("Printed");
-  //   form.resetForm();
-  // }
+    this.userService.loginUser(form.value.email, form.value.password);
+    console.log("Printed");
+    form.resetForm();
+  }
 
 }
