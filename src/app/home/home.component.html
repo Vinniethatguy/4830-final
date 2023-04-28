@@ -1,33 +1,38 @@
-<mat-card>
-  <form #login (submit)="onAddUser(postForm)" #postForm="ngForm">
-    <div>
-      <label for="firstname">First Name</label>
-      <input type="text" name="firstname" class="form-control"
-      #firstname="ngModel"
-      ngModel required>
+<div id="main_bake_section">
+  <div id="register_section">
+    <div class="glass">
+      <h1> SIGN UP </h1>
+      <form id="register_form" #login (submit)="onAddUser(postForm)" #postForm="ngForm">
+        <div>
+          <label for="firstname">First Name</label>
+          <input type="text" name="firstname" class="form-control"
+          #firstname="ngModel"
+          ngModel required>
+        </div>
+        <pre></pre>
+        <div>
+          <label for="lastname">Last Name</label>
+          <input type="text" name="lastname" class="form-control"
+          #lastname="ngModel"
+          ngModel required>
+        </div>
+        <pre></pre>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" class="form-control in_email"
+          #email="ngModel"
+          ngModel required>
+        </div>
+        <pre></pre>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control in_psw"
+          #password="ngModel"
+          ngModel required>
+        </div>
+        <pre></pre>
+        <button class="button-62" type="submit">Register</button>
+      </form>
     </div>
-    <pre></pre>
-    <div>
-      <label for="lastname">Last Name</label>
-      <input type="text" name="lastname" class="form-control"
-      #lastname="ngModel"
-      ngModel required>
-    </div>
-    <pre></pre>
-    <div>
-      <label for="email">Email</label>
-      <input type="email" name="email" class="form-control"
-      #email="ngModel"
-      ngModel required>
-    </div>
-    <pre></pre>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" class="form-control"
-      #password="ngModel"
-      ngModel required>
-    </div>
-    <pre></pre>
-    <button class="btn-primary" type="submit">Register</button>
-  </form>
-</mat-card>
+</div>
+</div>

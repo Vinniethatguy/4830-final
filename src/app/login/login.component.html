@@ -1,19 +1,24 @@
-<mat-card>
-  <form #login (submit)="onLoginUser(postForm)" #postForm="ngForm">
-    <div>
-      <label for="email">Email</label>
-      <input type="email" name="email" class="form-control"
-      #email="ngModel"
-      ngModel required>
-    </div>
-    <pre></pre>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" class="form-control"
-      #password="ngModel"
-      ngModel required>
-    </div>
-    <pre></pre>
-    <button class="btn-primary" type="submit">Login</button>
-  </form>
-</mat-card>
+<div id="main_bake_section">
+  <div id="login_section">
+    <mat-card class="glass">
+      <form id="login_form" #login (submit)="onLoginUser(postForm)" #postForm="ngForm">
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" class="form-control"
+          #email="ngModel"
+          ngModel required>
+        </div>
+        <pre></pre>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control"
+          #password="ngModel"
+          ngModel required>
+        </div>
+        <pre></pre>
+        <a href="register">Create an account</a>
+        <button class="button-62" type="submit">Login</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

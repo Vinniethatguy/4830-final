@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;700;800;900&family=Istok+Web&display=swap');
+
+#main_bake_section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color:azure;
+  background: url("../../assets/img/backg.png");
+  font-family: 'Inter', sans-serif;
+}
+
+#register_section{
+  position:relative;
+  width: 85%;
+  height: 75%;
+  margin-left: 10%;
+  margin-top: 3%;
+}
+
+#register_form{
+  position:relative;
+  width: 95%;
+  height: 65%;
+  color: black;
+  font-size: 210%;
+  /* margin-left: 30%; */
+  margin-top: 10%;
+}
+h1{
+  text-align: center;
+  color: rgb(43, 42, 41);
+}
+label{
+  position: relative;
+  color: rgb(43, 42, 41);
+  font-size: 90%;
+  margin-left: 3%;
+}
+input{
+  width: 50%;
+  height: 30px;
+  border-radius: 15px;
+  border-style: none;
+  margin-left: 10px;
+}
+
+.in_email{
+  position: relative;
+  margin-left: 15%;
+}
+
+.in_psw{
+  position: relative;
+  margin-left: 5%;
+}
+
+.glass{
+  position: relative;
+  left: 25%;
+  width: 50%;
+  background: rgba(128, 37, 146, 0.48);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.3px);
+  -webkit-backdrop-filter: blur(6.3px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* CSS */
+.button-62 {
+  background: linear-gradient(to bottom right, #7f0d8a, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  margin: 5%;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-62:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}

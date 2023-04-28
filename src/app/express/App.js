@@ -94,7 +94,7 @@ app.post("/api/users", async (req, res, next) => {
   new_user.save();
 
   res.status(201).json({
-    message: 'User added successful'
+    message: 'User added successfully'
   });
 })
 

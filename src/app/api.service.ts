@@ -51,6 +51,15 @@ export class ApiService{
     this.http.post<{message: string}>("http://localhost:3000/api/users", user)
     .subscribe((responseData) => {
       console.log(responseData.message)
+      if(responseData.message.includes("successfully")){
+        console.log("Registration success")
+        this.router.navigate(["/"]);
+      }
+      else{
+        this.userLogIn = false;
+        this.router.navigate(["/register"]);
+      }
+
       this.users.push(user);
       this.userUpdate.next([...this.users]);
   });
