@@ -17,6 +17,7 @@ export class LoginComponent {
     }
 
     this.userService.loginUser(form.value.email, form.value.password);
+
     console.log("Printed");
     form.resetForm();
   }

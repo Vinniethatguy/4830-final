@@ -60,6 +60,7 @@ app.post('/api/user_login', async(req, res, next) => {
       });
     } else {
       // fail login
+      console.log("Login failure")
       res.status(201).json({
         message: 'Incorrect information please try again'
       });

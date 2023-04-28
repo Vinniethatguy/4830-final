@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
-import{User} from './user.model';
+import { User} from './user.model';
 import { Contact } from './contact.model';
 import { Login_User } from './login_user.model';
 
@@ -13,19 +14,17 @@ export class ApiService{
   private users: User[] = [];
   private userUpdate = new Subject<User[]>();
 
-  constructor(private http: HttpClient){};
+  private userLogIn: Boolean = false;
+  private userLogInUpdate = new Subject<Boolean>();
 
-  getPosts(){
-    this.http.get<{message: string, users: User[]}>('http://localhost:3000/api/posts')
-    .subscribe((userData) => {
-      this.users = userData.users;
-      this.userUpdate.next([...this.users]);
-    });
-    // return [...this.posts];
+  constructor(private http: HttpClient, private router: Router){};
+
+  getUserLogInStatus(){
+    return this.userLogIn;
   }
 
-  getPostUpdateListener(){
-    return this.userUpdate.asObservable();
+  getLoginUpdateListener(){
+    return this.userLogInUpdate.asObservable();
   }
 
   loginUser(email: string, password: string){
@@ -34,6 +33,16 @@ export class ApiService{
     this.http.post<{message: string}>("http://localhost:3000/api/user_login", login_info)
     .subscribe((responseData) => {
       console.log(responseData.message)
+
+      if(responseData.message.includes("successfully")){
+        console.log("Login success")
+        this.userLogIn = true;
+        this.router.navigate(["/landing"]);
+      }
+      else{
+        this.userLogIn = false;
+        this.router.navigate([""]);
+      }
   });
   }
 
