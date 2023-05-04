@@ -16,15 +16,13 @@ import {User} from './user.model';
 import {Contact} from './contact.model';
 import { Login_User } from './login_user.model';
 import {ApiService} from './api.service';
-import { ComponentNameComponent } from './component-name/component-name.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    routingComponents,
-    ComponentNameComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
