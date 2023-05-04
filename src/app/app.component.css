@@ -6,3 +6,14 @@ footer {
   position: absolute;
   background-image: linear-gradient(to right, #9a56d6, #3937db);
 }
+
+header {
+  position: fixed;
+  z-index: 1;
+  text-align: center;
+  width: 50%;
+  height: 60px;
+  background-image: linear-gradient(to right, #9a56d6, #3937db);
+  margin-left: 30%;
+
+}
