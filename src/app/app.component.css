@@ -1,0 +1,8 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  background-image: linear-gradient(to right, #9a56d6, #3937db);
+}
