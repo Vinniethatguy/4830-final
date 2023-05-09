@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { LandingComponent } from './landing/landing.component'
+import { RecipesConponent } from './recipes/recipes.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
   path:'contact',component: ContactComponent
+  },
+  {
+    path: 'recipes', component: RecipesConponent
   }
 ]
 
@@ -26,4 +30,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HomeComponent, LoginComponent, LandingComponent, ContactComponent];
+export const routingComponents = [HomeComponent, LoginComponent, LandingComponent, ContactComponent, RecipesConponent];

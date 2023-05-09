@@ -8,6 +8,6 @@ import { NgModel } from "@angular/forms";
   styleUrls: ['./recipes.component.css']
 })
 
-export class Recipes{
+export class RecipesConponent{
   treats = ['Baker Boss Muffin', 'Baker Boss Cupcake', 'Baker Boss Cake', 'Baker Boss Brownie'];
 }
